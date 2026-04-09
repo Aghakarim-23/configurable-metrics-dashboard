@@ -20,7 +20,7 @@ const AddCard = () => {
       return;
     }
 
-    const newCard = { id: Date.now(), name, symbol, value };
+    const newCard = { id: Date.now(), name, symbol, value: Number(value) };
     addCard(newCard);
 
     setName("");

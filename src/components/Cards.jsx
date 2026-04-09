@@ -1,23 +1,7 @@
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
-import Card from "./Card";
-import { useContext, useEffect, useState } from "react";
+import Card from "../components/Card";
+import { useContext } from "react";
 import { CardContext } from "../context/CardContext";
-
-const StrictModeDroppable = ({ children, ...props }) => {
-  const [enabled, setEnabled] = useState(false);
-
-  useEffect(() => {
-    const animation = requestAnimationFrame(() => setEnabled(true));
-    return () => {
-      cancelAnimationFrame(animation);
-      setEnabled(false);
-    };
-  }, []);
-
-  if (!enabled) return null;
-
-  return <Droppable {...props}>{children}</Droppable>;
-};
 
 const Cards = () => {
   const { cards, setCards } = useContext(CardContext);
@@ -34,7 +18,7 @@ const Cards = () => {
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <StrictModeDroppable droppableId="cards">
+      <Droppable droppableId="cards">
         {(provided) => (
           <div
             className="flex flex-wrap gap-4 mt-12 px-21.5"
@@ -57,7 +41,7 @@ const Cards = () => {
             {provided.placeholder}
           </div>
         )}
-      </StrictModeDroppable>
+      </Droppable>
     </DragDropContext>
   );
 };
