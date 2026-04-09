@@ -1,11 +1,16 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import AddCard from "./pages/AddCard";
+import { CardProvider } from "./context/CardContext";
 
 const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-    </Routes>
+    <CardProvider>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/add-card" element={<AddCard />} />
+      </Routes>
+    </CardProvider>
   );
 };
 

@@ -1,4 +1,5 @@
 import { FiPlus } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const handleAdd = () => {
@@ -6,13 +7,15 @@ const Header = () => {
   };
   return (
     <div className="h-40 flex items-center px-21.5 border-b-2">
-      <button
-        className="flex items-center justify-center h-10 w-40 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-        onClick={handleAdd}
-      >
-        <FiPlus className="mr-2" />
-        Add Card
-      </button>
+      <Link to="/add-card">
+        <button
+          className="flex items-center justify-center h-10 w-40 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+          onClick={handleAdd}
+        >
+          <FiPlus className="mr-2" />
+          Add Card
+        </button>
+      </Link>
     </div>
   );
 };
