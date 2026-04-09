@@ -1,8 +1,17 @@
 import { FaTrash } from "react-icons/fa";
+import { useContext } from "react";
+import { CardContext } from "../context/CardContext";
 
 const Card = ({ data }) => {
-  const handleDelete = () => {
-    alert(`Deleted ${data.name}!`);
+  const { cards, setCards } = useContext(CardContext);
+
+  const handleDelete = (id) => {
+
+    setCards((prev) => {
+      const updated = prev.filter((card) => card.id !== id);
+      console.log("after:", updated);
+      return updated;
+    });
   };
 
   return (
@@ -11,7 +20,7 @@ const Card = ({ data }) => {
         <span className="text-lg font-medium">{data.name}</span>
 
         <button
-          onClick={handleDelete}
+          onClick={() => handleDelete(data.id)}
           className="flex items-center space-x-1 p-2 bg-red-500 cursor-pointer text-white rounded hover:bg-red-600"
         >
           <FaTrash />

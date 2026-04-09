@@ -1,5 +1,4 @@
 import Card from "./Card";
-import { data } from "../data/metrics";
 import { useContext } from "react";
 import { CardContext } from "../context/CardContext";
 
